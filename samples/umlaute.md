@@ -6,3 +6,6 @@
 - Er war sehr alt und hatte schon viele Stuerme ueberstanden.
 - Er war sehr gluecklich, denn er hatte viele Freunde.
 - Er wuerde sich gerne aeussern, aber er konnte nicht sprechen.
+- Gluecklich oder nicht gluecklich, das ist hier die Frage.
+- Verunglueckt bei dem Versuch, sich zu aeussern, ist er nicht.
+- Salzsaeure ist nicht gut fuer den weissen gruenen Baum.
