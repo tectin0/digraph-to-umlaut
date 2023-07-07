@@ -1,21 +1,38 @@
+use std::error::Error;
 use std::{cell::RefCell, rc::Rc};
 
 use itertools::chain;
 
+use crate::config::get_config_value;
 use crate::tree::TreeNode;
 
 use crate::constants::*;
 
+use crate::utils::ToUmlautLowercase;
+
 pub(crate) fn search_dictionary(
     word: Vec<u8>,
     dictionary: Rc<RefCell<TreeNode>>,
-) -> (bool, Option<Vec<u8>>) {
+) -> Result<(bool, Option<Vec<u8>>), Box<dyn Error>> {
+    let is_ignore_case = match get_config_value("ignore_case")?.as_bool() {
+        Some(value) => value,
+        None => false,
+    };
+
     let mut current_node = dictionary;
 
     let mut eszett_node: Option<Rc<RefCell<TreeNode>>> = None;
     let mut is_eszett = false;
 
-    for letter in word.clone().into_iter() {
+    for mut letter in word.clone().into_iter() {
+        match is_ignore_case {
+            true => {
+                letter.make_ascii_lowercase();
+                letter.make_umlaut_lowercase();
+            }
+            false => (),
+        }
+
         let child = current_node.borrow().get_child(letter);
 
         if letter == ESZETT {
@@ -26,19 +43,19 @@ pub(crate) fn search_dictionary(
         match child {
             Some(child) => current_node = child,
             None => match is_eszett {
-                false => return (false, None),
-                true => return recheck_eszett_tree_for_ss(eszett_node, &word),
+                false => return Ok((false, None)),
+                true => return Ok(recheck_eszett_tree_for_ss(eszett_node, &word)),
             },
         }
     }
 
     match is_eszett {
         true => match recheck_eszett_tree_for_ss(eszett_node, &word) {
-            (true, Some(replacement_word)) => (true, Some(replacement_word)),
-            (true, None) => (false, None),
-            (false, _) => (true, None),
+            (true, Some(replacement_word)) => Ok((true, Some(replacement_word))),
+            (true, None) => Ok((false, None)),
+            (false, _) => Ok((true, None)),
         },
-        false => (true, None),
+        false => Ok((true, None)),
     }
 }
 

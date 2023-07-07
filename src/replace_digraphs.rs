@@ -9,10 +9,8 @@ use itertools::Itertools;
 
 use crate::constants::*;
 
-use crate::config;
 use crate::search_dictionary::search_dictionary;
 use crate::tree::TreeNode;
-use crate::utils::ToUmlautLowercase;
 
 enum Case {
     Lower,
@@ -35,7 +33,9 @@ pub(crate) fn replace_digraphs(
     mut input: HashMap<String, Vec<Vec<u8>>>,
     dictionary: Rc<RefCell<TreeNode>>,
 ) -> Result<(), Box<dyn Error>> {
-    let ignore_case = config::get_config_value("ignore_case")?.as_bool().unwrap();
+    let umlaute = [
+        LOWER_AE, LOWER_OE, LOWER_UE, UPPER_AE, UPPER_OE, UPPER_UE, ESZETT,
+    ];
 
     std::fs::create_dir_all("output")?;
 
@@ -45,7 +45,7 @@ pub(crate) fn replace_digraphs(
 
             let words: Vec<&mut [u8]> = line
                 .split_mut(|&x| {
-                    if x.is_ascii_alphanumeric() {
+                    if x.is_ascii_alphanumeric() || umlaute.contains(&x) {
                         false
                     } else {
                         word_delimiters.push(x);
@@ -163,19 +163,9 @@ pub(crate) fn replace_digraphs(
                 search_cut_off = (search_cut_off).min(replacement_word.len() - 1);
 
                 match search_dictionary(
-                    {
-                        match ignore_case {
-                            true => {
-                                let mut search_word = replacement_word.clone();
-                                search_word.make_ascii_lowercase();
-                                search_word.make_umlaut_lowercase();
-                                search_word[..=search_cut_off].to_vec()
-                            }
-                            false => replacement_word.clone()[..=search_cut_off].to_vec(),
-                        }
-                    },
+                    replacement_word.clone()[..=search_cut_off].to_vec(),
                     dictionary.clone(),
-                ) {
+                )? {
                     (true, None) => {
                         new_line.extend(replacement_word.clone());
                         new_line.push(delimiter);
@@ -207,11 +197,7 @@ pub(crate) fn replace_digraphs(
 fn write_to_file(file_name: &String, lines: &mut Vec<Vec<u8>>) -> Result<(), Box<dyn Error>> {
     let mut output_file = std::fs::File::create(format!("./output/{}", file_name))?;
     Ok(for line in lines {
-        let line = line
-            .iter()
-            .filter(|&x| *x != b'\0')
-            .map(|&x| x)
-            .collect_vec();
+        let line = line.iter().map(|&x| x).collect_vec();
 
         output_file.write_all(&line)?;
         output_file.write_all(b"\r\n")?;
