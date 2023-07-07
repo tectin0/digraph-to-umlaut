@@ -205,10 +205,15 @@ pub(crate) fn replace_digraphs(
 
 fn write_to_file(file_name: &String, lines: &mut Vec<Vec<u8>>) -> Result<(), Box<dyn Error>> {
     let mut output_file = std::fs::File::create(format!("./output/{}", file_name))?;
-    Ok(for line in lines {
+
+    let number_of_lines = lines.len();
+
+    Ok(for (index, line) in lines.into_iter().enumerate() {
         let line = line.iter().map(|&x| x).collect_vec();
 
         output_file.write_all(&line)?;
-        output_file.write_all(b"\r\n")?;
+        if index != number_of_lines - 1 {
+            output_file.write_all(b"\r\n")?;
+        }
     })
 }
