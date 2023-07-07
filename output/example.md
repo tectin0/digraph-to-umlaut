@@ -2,6 +2,7 @@
 layout: default
 title: Tag 2
 day: 2
+# FIXME: transforms trü to tr"ü" -> because early cutoff in tree search
 output: trü
 usemathjax: trü
 ---
@@ -22,13 +23,13 @@ usemathjax: trü
     <u>beobachtete Verhalten</u> erklärt, wichtig. Die <u>Analytik</u> nimmt dabei eine wichtige Rolle ein,
     denn ohne zu wissen <u>welcher Stoff</u> bei einer Synthese oder auch einer natürlichen Probe vorliegt,
     macht es keinen Sinn beim Verhalten od. seine Eigenschaften untersuchen undverstehen zu wollen.
-    <u>Erstmal muß ich wissen was ich für einen Stoff habe</u> und in der Anwendung will ich auch oft
+    <u>Erstmal muss ich wissen was ich für einen Stoff habe</u> und in der Anwendung will ich auch oft
     wissen <u>wieviel</u> ich davon habe, bspw. um eine Reaktion zu verfolgen und zu wissen wann der
     gewünschte Stoff vorliegt.
 </p>
 <p>
     Das ist übrigens im wesentlich gleich für Chemiestudenten im 1. Jahr Beispiel: <u>Warum sind bestimmte
-        Stoffe löslich im waessrigen System od. im Erdreich, warum andere nicht. Warum kommt Al nicht
+        Stoffe löslich im wässrigen System od. im Erdreich, warum andere nicht. Warum kommt Al nicht
         elementar vor? aber Gold wohl?</u>
 </p>
 <h2>
@@ -50,7 +51,7 @@ usemathjax: trü
     im Folgenden auf die klassischen Methoden; wir wollen ja Chemie lernen.<br>
     <u>Woher auch für physikalische Methoden zum kalibrieren</u> natürlich wieder ein chemisches Verständnis
     benötigt
-    wird, da ja <u>Nullpunkte</u> und <u>Eichkurven</u> mit dazugehörigen Lösungen erst bestimmt werden müßen,
+    wird, da ja <u>Nullpunkte</u> und <u>Eichkurven</u> mit dazugehörigen Lösungen erst bestimmt werden müssen,
     damit
     das
     Gerät arbeiten kann.
@@ -58,14 +59,14 @@ usemathjax: trü
 <wd>
     <h2>Versuche zu klassischen Methoden</h2>
     <b>Gravimetrie (Gewichtsanalyse)</b><br>
-    <b>Titrimetrie (Maßanalyse bzw. Volumetrie)</b><br>
+    <b>Titrimetrie (massanalyse bzw. Volumetrie)</b><br>
 </wd>
 
 Gravimetrie: Heute aufgrund der elektrischen Waagen viel einfacher als früher \-> nur ein
 Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
 
 <wd>
-    <h2>Masse des Reaktionsprodukts einer Fällungsreaktionh</2>
+    <h2>masse des Reaktionsprodukts einer Fällungsreaktion</h2>
 </wd>
 <p>
     Wir schütten zwei Lösungen zusammen, dabei fällt ein Feststoff aus \-> diesen wiegen wir. <br>
@@ -76,23 +77,23 @@ Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
 <h3>Bedingungen für eine Gravimetrie</h3>
 <ul>
     <li>
-        <w>Die Fällungs muß quantitativ (vollständig) sein.</w><br>
-        d.h. die Löslichkeit muß möglichst gering sein! Wie angehen? <br>
+        <w>Die Fällungs muss quantitativ (vollständig) sein.</w><br>
+        d.h. die Löslichkeit muss möglichst gering sein! Wie angehen? <br>
 
-        <w>Restkonzentration in Lösungw</>
+        <w>Restkonzentration in Lösung</w>
         < $10^{-5}$ mol/L $\hat{=} \cdot 40.08 \ \mathrm{g/mol}=0.4 \ \mathrm{mg/L}$ <br>
 
-            d.h. der Fehler der Fällung muß klein gegen die zu bestimmende Substanzmenge sein.
+            d.h. der Fehler der Fällung muss klein gegen die zu bestimmende Substanzmenge sein.
     </li>
     <li>
-        <w>Der Niederschlag muß eine konstante und bekannte Zusammensetzung haben.</w> oder durch eine nachfolgende
+        <w>Der Niederschlag muss eine konstante und bekannte Zusammensetzung haben.</w> oder durch eine nachfolgende
         Behandlung in sie überführt werden. <br>
         D.h. $\ce{AgCl}$ ist nur bedingt geeignet, da es sich an Licht zersetzt. <br>
-        Man müßte im Dunkeln oder aber sehr schnell auswiegen.
+        Man müsste im Dunkeln oder aber sehr schnell auswiegen.
     </li>
     <li>
-        <w>Der Niederschlag muß in "Wägeform" vorliegen.</w> Ein Product, dass bspw. <u>hygroskopisch</u> ist, also
-        Waßer aus der Luft zieht, der würde beim Wiegen immer schwerer wiegen. <br>
+        <w>Der Niederschlag muss in "Wägeform" vorliegen.</w> Ein Product, dass bspw. <u>hygroskopisch</u> ist, also
+        wasser aus der Luft zieht, der würde beim Wiegen immer schwerer wiegen. <br>
         Anderes Beispiel für eine Fällung: Trinkwasseraufbereitung <br>
         <wd>
             $\ce{
@@ -114,27 +115,27 @@ Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
             ->
             $\underset{
             \substack{
-            \text{Faellungsform \-> abfiltrieren} \\
+            \text{Fällungsform \-> abfiltrieren} \\
             \color{red}{
-            \text{Voellig undefinierte Zusammensetzung} \\
+            \text{Völlig undefinierte Zusammensetzung} \\
             \text{Schlamm von Hydroxyden}
             }
             }
             }
             {"\ce{Fe2O3 \cdot x H2O}"}$
             ->[\Delta T][\substack{\color{red}{
-            \text{Gluehen bei 600 $^\circ$C} \\
+            \text{Glühen bei 600 $^\circ$C} \\
             \text{im Porzelantiegel} \\
             \text{einige Stunden}
             }
             }] $\underset{
-            \text{Waegeform}
+            \text{Wägeform}
             }
             {\ce{Fe2O3}}$
             }$
         </wd>
-        Stoichiometrie sagt uns wie die Maße auf die gesuchte Substanz umgerechnet werden kann.<br>
-        \lightning: Für das Prakitkum eher schwierig, da die 600$^\circ$C sehr genau stimmen müßen,
+        Stoichiometrie sagt uns wie die masse auf die gesuchte Substanz umgerechnet werden kann.<br>
+        \lightning: Für das Prakitkum eher schwierig, da die 600$^\circ$C sehr genau stimmen müssen,
         sonst bilden sich andere Oxide: $\ce{FeO}$, $\ce{Fe3O4}$. Im Praktikum daher ein einfacheres Experiment \-> u.
         Mo. (?)
     </li>
@@ -204,7 +205,7 @@ Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
             },
         };
 
-        var äpannotation_ = {
+        var äp_annotation = {
             xref: "x",
             yref: "y",
             x: 10,
@@ -234,7 +235,7 @@ Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
                 ticktext: [7],
             },
             annotations: [
-                äpannotation_,
+                äp_annotation,
             ],
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)',
@@ -249,17 +250,17 @@ Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
 
 <ol type="a">
     <li>
-        <w>Saeure-Base-Titration</w>: <br>
-        Über pH-Wert, relativ leicht durchführbar. Beachten muß man ob man es mit <u>starken oder eher schwachen
+        <w>Säure-Base-Titration</w>: <br>
+        Über pH-Wert, relativ leicht durchführbar. Beachten muss man ob man es mit <u>starken oder eher schwachen
             Saueren/Basen</u> durchführt, <u>welchen Indikator</u> man nimmt oder ob z.B. <u>mehrstufige oder
             Puffersysteme</u> vorliegen. <u>Virtuelles Labor!</u> \-> Verweise auf Selbstlerneinheit
     </li>
     <li>
-        <w>Faellungstitration</w>: <br>
+        <w>Fällungstitration</w>: <br>
         Beispiel <u>$\ce{AgCl}$</u>; <u>Endpunkt schwierig</u>, daher indirekt mit einem <u>Indikator der auf $\ce{Cl-}$
             empfindlich ist</u> und anzeigt wenn alles <u>$\ce{Cl-}$ verbraucht </u> ist durch einen <u>Farbumschlag
-            $\hat{=}$ Endpunkt</u> bzw. bereits ein klein wenig zu viel (<u>uebertitriert</u>); während bei starken
-        SäurenBasen/ der Umschlag schwierig ist.
+            $\hat{=}$ Endpunkt</u> bzw. bereits ein klein wenig zu viel (<u>übertitriert</u>); während bei starken
+        Säuren/Basen der Umschlag schwierig ist.
     </li>
     <li>
         <w>Redox-Titration</w>: Versuch Mittwoch <br>
@@ -317,13 +318,14 @@ Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
     </li>
 </ol>
 <p>
-    <u>Massloesung</u> muß gut eingestellt sein. Entweder selber oder gekauft. Selber ist nicht ganz leicht. Man
-    muß eine Lösung einer bekannten Konzentration herstellen. <br>
-    Beispiel: Für <u>Salzsaeure müßte $\ce{HCl}$-Gas</u> in Waßer gelöst werden; das kann man schlecht wiegen
+    <!-- FIXME: check why Massloesung is not converted -->
+    <u>Massloesung</u> muss gut eingestellt sein. Entweder selber oder gekauft. Selber ist nicht ganz leicht. Man
+    muss eine Lösung einer bekannten Konzentration herstellen. <br>
+    Beispiel: Für <u>Salzsäure müsste $\ce{HCl}$-Gas</u> in wasser gelöst werden; das kann man schlecht wiegen
     und es löst sich nur züinem bestimmten Teil nicht vollständig. daher nicht konzentrierte $\ce{HCl}$. Oder man
-    nimmt eine Metallsalz-Lösung; diese müßte aber auch erst titriert werden. <br>
+    nimmt eine Metallsalz-Lösung; diese müsste aber auch erst titriert werden. <br>
     Oder: man verdünnt konzentrierte $\ce{HCl}$; aber ungenau. <br>
-    <u>Besser:</u> wäre eine Stoff der sich <u>gut löst in Waßeru</> und den man <u>gut wiegen</u> kann und
+    <u>besser:</u> wäre eine Stoff der sich <u>gut löst in wasser</u> und den man <u>gut wiegen</u> kann und
     dessen Lösung <u>lange Zeit stabil</u> ist. <br>
     z.B. Soda also $\ce{Na2CO3}$; das Salz einer schwachen Säure in $\ce{H2O}$ gelöst wird die Lösung basisch; pH
     = berechenbar = 11.44 bzw. 12.17. <br>
@@ -332,7 +334,7 @@ Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
     CO3^2- + H2O -> HCO3- + OH-
     }$ <br>
 
-    <u>Eine solche leicht zugängliche, stabile Massloesung heißtu</>
+    <u>Eine solche leicht zugängliche, stabile Massloesung heißt</u>
     <w>Urtiter: stabile Massloesung über lange Zeit. z.B. $\ce{Na2CO3}$ zur Gehaltsbestimmung von
         Titrierfluessigkeiten z.B. anderen Massloesungen</w> <br>
 
@@ -341,8 +343,8 @@ Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
     sich beim Lösen Kohlensäure die $\ce{OH-}$ verbraucht. <u>Permanganat ist stark oxidierend</u>, das jedes
     "Staubteilchen" oxidiert wird und sich die Lösung verbraucht; frisch herstellen. Titriplex ist recht stabil!<br>
 
-    <w>Normalloesung: Massloesung mit Bezug auf die Normalität statt Molaritätw</> Im Prinzip veraltet nach aktueller
-    Nomenklatur aber in der Analytik oder bei SäureBase/-Reaktionen noch gängig berücksichtigt (??) wie eine Substanz
+    <w>Normalloesung: Massloesung mit Bezug auf die Normalität statt Molarität</w> Im Prinzip veraltet nach aktueller
+    Nomenklatur aber in der Analytik oder bei Säure/Base-Reaktionen noch gängig berücksichtigt (??) wie eine Substanz
     reagiert. z.B. $\ce{HCl(aq)}$ hat 1 Proton; reagiert 1:1 mit $\ce{NaOH}$; Molarität und Normalität sind gleich.
     Aber 1 m $\ce{H2SO4}$ hat 2 Protonen d.h. die doppelte Menge $\ce{NaOH}$ reagiert bis zur Neutralität \-> 1 m
     $\ce{H2SO4}$ = 2 m $\ce{H3SO4}$ oder 1 n $\ce{H2SO4}$ ist 0.5 m wird mit 1n $\ce{NaOH}$ (1 m) neutralisiert.<br>
@@ -353,7 +355,7 @@ Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
         $\ce{MnO4-}$ (Permanganat-Ion) mit $m = 0.2\textrm{mol / L}$ ist $n = 1\textrm{mol / L}$ bezüglich der
         Elektronen der Redox-Reaktion <br>
     </wd> <br>
-    Für die Rechnung ist die Normalität also einfacher weil man sich die Reaktion nicht anschauen muß und die
+    Für die Rechnung ist die Normalität also einfacher weil man sich die Reaktion nicht anschauen muss und die
     Äquivalenzbedingung 1:1 ist. <br>
     <wd>
         Faktoren auf Flaschen: F; Änderung durch Alterung der Massloesung zur <u>Brechnung</u> notieren! \-> nur noch
@@ -367,4 +369,3 @@ Versuch - $\ce{Ca2+}$ Gravimetrie nächsten Montag<br>
     </wd>
 
 </p>
-
