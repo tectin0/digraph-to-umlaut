@@ -37,6 +37,8 @@ pub(crate) fn replace_digraphs(
 ) -> Result<(), Box<dyn Error>> {
     let ignore_case = config::get_config_value("ignore_case")?.as_bool().unwrap();
 
+    std::fs::create_dir_all("output")?;
+
     for (file_name, lines) in input.iter_mut() {
         for line in lines.iter_mut() {
             let mut word_delimiters: Vec<u8> = Vec::new();
@@ -196,19 +198,22 @@ pub(crate) fn replace_digraphs(
             *line = new_line;
         }
 
-        let mut output_file = std::fs::File::create(format!("./output/{}", file_name))?;
-
-        for line in lines {
-            let line = line
-                .iter()
-                .filter(|&x| *x != b'\0')
-                .map(|&x| x)
-                .collect_vec();
-
-            output_file.write_all(&line)?;
-            output_file.write_all(b"\r\n")?;
-        }
+        write_to_file(file_name, lines)?;
     }
 
     Ok(())
+}
+
+fn write_to_file(file_name: &String, lines: &mut Vec<Vec<u8>>) -> Result<(), Box<dyn Error>> {
+    let mut output_file = std::fs::File::create(format!("./output/{}", file_name))?;
+    Ok(for line in lines {
+        let line = line
+            .iter()
+            .filter(|&x| *x != b'\0')
+            .map(|&x| x)
+            .collect_vec();
+
+        output_file.write_all(&line)?;
+        output_file.write_all(b"\r\n")?;
+    })
 }
