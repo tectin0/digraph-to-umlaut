@@ -27,3 +27,10 @@ If some weird characters appear in the output files, make sure that the input fi
 I used the python file `scrape_wiktionary.py` to extract a list of chemistry words for the `chem_terms.dic`
 
 An example file can be found in the `samples` folder and the corresponding output can be found in the `output` folder of the repository (they are not included in the release)
+
+Includes a VS Code tasks.json with a default build task that runs the program on the `samples` folder.
+
+## Credits
+
+- [LibreOffice](https://github.com/LibreOffice/dictionaries) for the de_DE dictionary
+- [Wiktionary](https://de.wiktionary.org/wiki/Verzeichnis%253ADeutsch/Chemie/Fachwortliste) for the list of chemistry words
