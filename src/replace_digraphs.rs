@@ -5,7 +5,6 @@ use std::io::Write;
 use std::rc::Rc;
 
 use itertools::izip;
-use itertools::FoldWhile::Continue;
 use itertools::Itertools;
 
 use crate::constants::*;
@@ -43,16 +42,13 @@ pub(crate) fn replace_digraphs(
             let mut word_delimiters: Vec<u8> = Vec::new();
 
             let words: Vec<&mut [u8]> = line
-                .split_mut(|&x| match x {
-                    b' ' => {
+                .split_mut(|&x| {
+                    if x.is_ascii_alphanumeric() {
+                        false
+                    } else {
                         word_delimiters.push(x);
                         true
                     }
-                    b'-' => {
-                        word_delimiters.push(x);
-                        true
-                    }
-                    _ => false,
                 })
                 .collect();
 
@@ -63,31 +59,7 @@ pub(crate) fn replace_digraphs(
             assert_eq!(words.len(), word_delimiters.len());
 
             for (word, delimiter) in izip!(words.into_iter(), word_delimiters.into_iter()) {
-                let mut replacement_word: Vec<u8> = Vec::new();
-
-                // split replacement_word into non-alphabetical and alphabetical parts
-                // TODO: extract
-                let (prefix, suffix) = word
-                    .to_vec()
-                    .iter()
-                    .fold_while(
-                        (Vec::<u8>::new(), Vec::<u8>::new()),
-                        |(mut prefix, mut suffix), &x| match x {
-                            b'a'..=b'z' | b'A'..=b'Z' => {
-                                replacement_word.push(x);
-                                Continue((prefix, suffix))
-                            }
-                            _ => {
-                                if replacement_word.is_empty() {
-                                    prefix.push(x);
-                                } else {
-                                    suffix.push(x);
-                                }
-                                Continue((prefix, suffix))
-                            }
-                        },
-                    )
-                    .into_inner();
+                let mut replacement_word = word.to_vec();
 
                 let mut digraphs: HashMap<usize, DigraphCounter> = HashMap::new();
 
@@ -185,7 +157,8 @@ pub(crate) fn replace_digraphs(
                     replacement_word.remove(*digraph_index + 1);
                 }
 
-                let search_cut_off = max_digraph_index + 1 - digraphs.len();
+                let mut search_cut_off = max_digraph_index + 1 - digraphs.len();
+                search_cut_off = (search_cut_off).min(replacement_word.len() - 1);
 
                 match search_dictionary(
                     {
@@ -201,13 +174,17 @@ pub(crate) fn replace_digraphs(
                     },
                     dictionary.clone(),
                 ) {
-                    true => {
-                        new_line.extend(prefix);
+                    (true, None) => {
                         new_line.extend(replacement_word.clone());
-                        new_line.extend(suffix);
                         new_line.push(delimiter);
                     }
-                    false => {
+                    (true, Some(mut new_replacement_word)) => {
+                        new_replacement_word
+                            .extend(replacement_word.iter().skip(search_cut_off + 1));
+                        new_line.extend(new_replacement_word);
+                        new_line.push(delimiter);
+                    }
+                    (false, None | Some(_)) => {
                         new_line.extend(word.to_vec());
                         new_line.push(delimiter);
                     }

@@ -30,6 +30,7 @@ impl TreeNode {
         None
     }
 
+    #[allow(dead_code)]
     pub(crate) fn len(&self) -> usize {
         self.children.len()
     }
