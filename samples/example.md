@@ -16,7 +16,6 @@ usemathjax: true
     </h1>
 </wd>
 
-<!-- FIXME: check why altertuemlich is not converted -->
 <p>Manchmal Frage von Studenten: Warum diese altertuemlichen, anmutenden, nass-chemischen (?) Versuche,
     wenn es doch allerhand moderne Sensoren & Analytimethoden gibt? Grund: Wir wollen ja die <u>Chemie
         erlernen & nicht die physikalischen Verfahren</u>. Und dazu ist neben dem
@@ -319,7 +318,7 @@ Versuch - $\ce{Ca2+}$ Gravimetrie naechsten Montag<br>
     </li>
 </ol>
 <p>
-    <!-- FIXME: probably doesn't convert the words directly between tags because the stripping of non-alphabetric characters doesn't work properly -->
+    <!-- FIXME: check why doesn't convert Massloesung -->
     <u>Massloesung</u> muss gut eingestellt sein. Entweder selber oder gekauft. Selber ist nicht ganz leicht. Man
     muss eine Loesung einer bekannten Konzentration herstellen. <br>
     Beispiel: Fuer <u>Salzsaeure muesste $\ce{HCl}$-Gas</u> in Wasser geloest werden; das kann man schlecht wiegen

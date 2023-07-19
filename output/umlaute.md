@@ -9,4 +9,6 @@
 - Glücklich oder nicht glücklich, das ist hier die Frage.
 - Verunglückt bei dem Versuch, sich zu äußern, ist er nicht.
 - Salzsäure ist nicht gut für den weissen grünen Baum.
+- Der grüner Baum ist nicht glücklich, denn er hat keine Freunde.
+- Wasser ist nicht gut für den weissen grünen Baum.
 
