@@ -32,6 +32,7 @@ enum DigraphCounter {
 pub(crate) fn replace_digraphs(
     mut input: HashMap<String, Vec<Vec<u8>>>,
     dictionary: Rc<RefCell<TreeNode>>,
+    exclude: Vec<Vec<u8>>,
 ) -> Result<(), Box<dyn Error>> {
     let umlaute = [
         LOWER_AE, LOWER_OE, LOWER_UE, UPPER_AE, UPPER_OE, UPPER_UE, ESZETT,
@@ -62,6 +63,14 @@ pub(crate) fn replace_digraphs(
 
             for (word, delimiter) in izip!(words.into_iter(), word_delimiters.into_iter()) {
                 let mut replacement_word = word.to_vec();
+
+                // TODO: could probably be done more efficiently -> e.g. integration for exclusions into the dictionary tree
+                // with small exlusion list, this is probably not a problem
+                if exclude.contains(&word.to_vec()) {
+                    new_line.extend(replacement_word);
+                    new_line.push(delimiter);
+                    continue;
+                }
 
                 let mut digraphs: HashMap<usize, DigraphCounter> = HashMap::new();
 
